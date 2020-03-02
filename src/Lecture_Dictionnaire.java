@@ -11,7 +11,7 @@ public class Lecture_Dictionnaire {
 
     public static List<String> getLines() throws IOException {
         getLines = new ArrayList<>();
-        Stream<String> getLinesStream = Files.lines(Paths.get("resources", "/dict-simple.txt"));
+        Stream<String> getLinesStream = Files.lines(Paths.get("resources", "/dico.txt"));
         getLines = getLinesStream.limit(1000).collect(Collectors.toList());
         return getLines;
     }

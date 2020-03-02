@@ -10,6 +10,7 @@ public class Multi_Set {
 
     public Multi_Set(String mot) {
         this.mot =mot;
+
         ensemble_R = new ArrayList<>();
         for (int i = 0; i < mot.length(); i++) {
             ensemble_R.add(mot.charAt(i));
@@ -32,7 +33,7 @@ public class Multi_Set {
         return ensemble_R.size();
     }
 
-    public boolean contains(char e) {
+    public boolean contains(ArrayList<Character> e) {
         return ensemble_R.contains(e);
     }
 
