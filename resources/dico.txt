@@ -6,3 +6,4 @@ son
 nord
 ouest
 pole
+o

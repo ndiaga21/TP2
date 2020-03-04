@@ -17,6 +17,14 @@ public class Multi_Set {
         }
     }
 
+    public String getMot() {
+        return mot;
+    }
+
+    public void setMot(String mot) {
+        this.mot = mot;
+    }
+
     public static ArrayList<Character> getEnsemble_R() {
         return ensemble_R;
     }
