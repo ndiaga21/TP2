@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class Complementaire {
  private Multi_Set multi_set;
  private Table_Hashage table_hashage;
-   static ArrayList<String> deux_sommes =new ArrayList<>(); ;
+   static ArrayList<ArrayList<Character>> deux_sommes =new ArrayList<>();
 
     public Complementaire(Multi_Set multi_set, Table_Hashage table_hashage) {
         this.multi_set = multi_set;
@@ -14,20 +14,27 @@ public class Complementaire {
     }
 
     public void recherche_complementaire() throws IOException {
-
+       String missing_set="";
         for (String mot_dico:Lecture_Dictionnaire.getLines()) {
             if (isSubAnagram(mot_dico, multi_set.getMot())) {
-                getaVoid(multi_set.hashCode()-new Multi_Set(mot_dico).hashCode());
+              missing_set=  delete_multi_setC_in_multisetR(mot_dico,multi_set.getMot());
+
+                if (table_hashage.dico_to_TableHachage().get(new Multi_Set(missing_set).hashCode()) != null) {
+                    setCle(new Multi_Set(missing_set).hashCode(),new Multi_Set(missing_set).getMot());
+                }
             }
         }
-        System.out.println(deux_sommes);
+       System.out.println("les deux mots dans le dico qui constitue l'ensemble R donne "+Multi_Set.getEnsemble_R() +" sont "+deux_sommes);
     }
 
-    private void getaVoid(int cle) throws IOException {
-
-        if (table_hashage.dico_to_TableHachage().get(cle) != null) {
-            deux_sommes.add(table_hashage.dico_to_TableHachage().get(cle).toString());
+    private void setCle(int cle, String mot) throws IOException {
+        for (int i = 0; i <table_hashage.dico_to_TableHachage().get(cle).size() ; i++) {
+            if (isSubAnagram(mot, table_hashage.dico_to_TableHachage().get(cle).get(i).toString())) {
+                if (!deux_sommes.contains(table_hashage.dico_to_TableHachage().get(cle).get(i)))
+                deux_sommes.add(table_hashage.dico_to_TableHachage().get(cle).get(i));
+            }
         }
+
     }
 
     public static boolean isSubAnagram(CharSequence word, CharSequence letters) {
@@ -41,6 +48,31 @@ public class Complementaire {
             lettersCodePoints.remove(indices);
         }
         return true;
+    }
+
+    public static String delete_multi_setC_in_multisetR(CharSequence word, CharSequence letters) {
+        List<Integer> wordCodesPoints = toCodePoints(word);
+        List<Integer> lettersCodePoints = toCodePoints(letters);
+        for (int c : wordCodesPoints) {
+            int indices = lettersCodePoints.indexOf(c);
+            if (indices != -1) {
+                lettersCodePoints.remove(indices);
+            }
+
+        }
+           return toLetters(lettersCodePoints);
+
+    }
+
+    private static String toLetters(List<Integer> integerList) {
+        char[] result1 ;
+        String str1="";
+        for (int i = 0; i <integerList.size() ; i++) {
+            result1 = Character.toChars(integerList.get(i));
+            str1 = str1 + result1[0];
+        }
+
+        return str1;
     }
 
     private static List<Integer> toCodePoints(CharSequence letters) {
