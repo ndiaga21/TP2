@@ -5,9 +5,10 @@ public class Test {
     public static void main(String[] args) throws IOException {
 
          Multi_Set multi_set = new Multi_Set("aouu");
-        System.out.println(Multi_Set.getEnsemble_R());
-      /*    Complementaire complementaire = new Complementaire(multi_set, new Table_Hashage());
-          complementaire.recherche_complementaire();*/
+         Table_Hashage table_hashage = new Table_Hashage();
+
+         Complementaire complementaire = new Complementaire(multi_set, table_hashage);
+          complementaire.recherche_complementaire();
 
     }
 }

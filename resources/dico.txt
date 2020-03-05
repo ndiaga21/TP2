@@ -1,3 +1,4 @@
+a
 au
 ou
 mot
@@ -7,3 +8,12 @@ nord
 ouest
 pole
 o
+nom
+ton
+table
+chagrin
+colle
+misère
+soucis
+yeux
+lampe

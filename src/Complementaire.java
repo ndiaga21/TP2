@@ -24,7 +24,11 @@ public class Complementaire {
                 }
             }
         }
-       System.out.println("les deux mots dans le dico qui constitue l'ensemble R donne "+Multi_Set.getEnsemble_R() +" sont "+deux_sommes);
+        if (deux_sommes.size() != 2){
+            System.out.println(" n'existe pas");
+        }else{System.out.println(" sont "+deux_sommes);}
+
+
     }
 
     private void setCle(int cle, String mot) throws IOException {

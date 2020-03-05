@@ -5,7 +5,7 @@ public class Table_Hashage {
      final static int TAILLE_HASHMAP = 17;
     static HashMap<Integer, LinkedList<ArrayList<Character>>> hashMap = new HashMap<>();
 
-     public HashMap<Integer, LinkedList<ArrayList<Character>>> dico_to_TableHachage() throws IOException {
+     public  HashMap<Integer, LinkedList<ArrayList<Character>>> dico_to_TableHachage() throws IOException {
           for (String mot:Lecture_Dictionnaire.getLines()) {
                Multi_Set multi_set= new Multi_Set(mot);
                Multi_Set.getEnsemble_R().sort(Character::compareTo);
@@ -32,9 +32,11 @@ public class Table_Hashage {
 
           }
 
-
-
           return list;
+     }
+
+     public void affiche_table_hachage() {
+
      }
 
 
